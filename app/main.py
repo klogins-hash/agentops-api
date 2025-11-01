@@ -9,7 +9,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
+from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 import nats
@@ -43,7 +44,8 @@ class ProjectUpdate(BaseModel):
 
 
 class Project(BaseModel):
-    id: str
+    model_config = ConfigDict(from_attributes=True)
+    id: UUID
     name: str
     description: Optional[str]
     status: str
@@ -75,8 +77,9 @@ class TaskUpdate(BaseModel):
 
 
 class Task(BaseModel):
-    id: str
-    project_id: Optional[str]
+    model_config = ConfigDict(from_attributes=True)
+    id: UUID
+    project_id: Optional[UUID]
     title: str
     description: Optional[str]
     status: str
@@ -100,8 +103,9 @@ class TaskUpdateCreate(BaseModel):
 
 
 class TaskUpdateResponse(BaseModel):
-    id: str
-    task_id: str
+    model_config = ConfigDict(from_attributes=True)
+    id: UUID
+    task_id: UUID
     agent_name: str
     update_type: str
     message: str
@@ -118,7 +122,8 @@ class AgentRegister(BaseModel):
 
 
 class Agent(BaseModel):
-    id: str
+    model_config = ConfigDict(from_attributes=True)
+    id: UUID
     name: str
     type: str
     status: str
@@ -138,7 +143,8 @@ class EventCreate(BaseModel):
 
 
 class Event(BaseModel):
-    id: str
+    model_config = ConfigDict(from_attributes=True)
+    id: UUID
     event_type: str
     source_agent: Optional[str]
     target_agent: Optional[str]

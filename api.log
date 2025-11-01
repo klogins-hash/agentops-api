@@ -1,0 +1,14 @@
+INFO:     Started server process [12879]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+🚀 Starting AgentOps API...
+✅ Database connected: 2 agents registered
+INFO:     127.0.0.1:53346 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "GET /projects HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "GET /agents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "GET /tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "POST /tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "PATCH /tasks/c0e3d1a5-8989-4efe-a8c8-ab123aa1aa20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "POST /task-updates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53346 - "GET /stats/overview HTTP/1.1" 200 OK
