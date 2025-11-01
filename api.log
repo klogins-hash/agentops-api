@@ -1,14 +1,58 @@
-INFO:     Started server process [12879]
+INFO:     Started server process [14517]
 INFO:     Waiting for application startup.
+nats: encountered error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/nats/aio/client.py", line 1330, in _select_next_server
+    await self._transport.connect(
+  File "/usr/local/lib/python3.11/dist-packages/nats/aio/transport.py", line 121, in connect
+    r, w = await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 484, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 47, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 2043, in create_connection
+  File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+ConnectionRefusedError: [Errno 111] Connection refused
+nats: encountered error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/nats/aio/client.py", line 1330, in _select_next_server
+    await self._transport.connect(
+  File "/usr/local/lib/python3.11/dist-packages/nats/aio/transport.py", line 121, in connect
+    r, w = await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 484, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 47, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 2043, in create_connection
+  File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+ConnectionRefusedError: [Errno 111] Connection refused
+nats: encountered error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/nats/aio/client.py", line 1330, in _select_next_server
+    await self._transport.connect(
+  File "/usr/local/lib/python3.11/dist-packages/nats/aio/transport.py", line 121, in connect
+    r, w = await asyncio.wait_for(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 484, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/streams.py", line 47, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 2043, in create_connection
+  File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+ConnectionRefusedError: [Errno 111] Connection refused
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 🚀 Starting AgentOps API...
+⚠️  Redis connection failed: Error 111 connecting to localhost:6379. 111.
+⚠️  NATS connection failed: 
 ✅ Database connected: 2 agents registered
-INFO:     127.0.0.1:53346 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "GET /projects HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "GET /agents HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "GET /tasks HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "POST /tasks HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "PATCH /tasks/c0e3d1a5-8989-4efe-a8c8-ab123aa1aa20 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "POST /task-updates HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53346 - "GET /stats/overview HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53606 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42544 - "POST /tasks HTTP/1.1" 200 OK

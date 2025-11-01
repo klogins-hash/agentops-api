@@ -16,6 +16,8 @@ from psycopg.rows import dict_row
 import nats
 from nats.aio.client import Client as NATS
 
+from app.events import event_system
+
 
 # Configuration
 DATABASE_URL = os.getenv("DB_HOST", "")
@@ -193,17 +195,8 @@ async def lifespan(app: FastAPI):
     # Startup
     print("🚀 Starting AgentOps API...")
     
-    # Connect to NATS if configured
-    if NATS_URL and NATS_CREDENTIALS:
-        try:
-            nc = await nats.connect(
-                servers=[NATS_URL],
-                user_credentials=NATS_CREDENTIALS
-            )
-            print(f"✅ Connected to NATS: {NATS_URL}")
-        except Exception as e:
-            print(f"⚠️  Failed to connect to NATS: {e}")
-            nc = None
+    # Connect event system (Redis + NATS)
+    await event_system.connect()
     
     # Test database connection
     try:
@@ -220,6 +213,7 @@ async def lifespan(app: FastAPI):
     
     # Shutdown
     print("👋 Shutting down AgentOps API...")
+    await event_system.disconnect()
     if nc:
         await nc.close()
 
